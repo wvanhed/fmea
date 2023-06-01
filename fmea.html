@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- Bootstrapped by ChatGPT, and adapted to needs -->
+<html>
+  
+<head>
+  <title>FMEA</title>
+  <style>
+    body {
+      margin-left: 10px;
+    }
+
+    select {
+      position: fixed;
+      left: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>FMEA bug scoring</h1>
+  <label for="dropdown1">Severity:</label>
+  <select id="dropdown1">
+    <option value="10">|10 | Data loss, data corruption or system unavailable</option>
+    <option value="8"> | 8 | Important functionality is unavailable with no workaround</option>
+    <option value="7"> | 7 | Important functionality is unavailable but has a reasonable workaround</option>
+    <option value="5"> | 5 | Secondary functionality is unavailable but has a reasonable workaround</option>
+    <option value="2"> | 2 | Cosmetic issues or some functionality unavailable but has a simple workaround</option>
+    <option value="2"> | 2 | Functionality used by non standard interface (e.g. direct API calls)</option>
+
+  </select>
+  <br>
+  <label for="dropdown2">Occurrance:</label>
+  <select id="dropdown2">
+    <option value="10">|10 | High probability this might happen (i.e. every time)</option>
+    <option value="5"> | 5 | Moderate probability this might happen (i.e. once every two weeks)</option>
+    <option value="5"> | 5 | Moderate probability this might happen: each time mobile view is used (primary funct'n)</option>
+    <option value="5"> | 5 | Moderate probability this might happen (only for some languages)</option>
+    <option value="3"> | 3 | Remote probability this might happen (i.e. once every two months)</option>
+    <option value="3"> | 3 | Remote probability this might happen: each time mobile view is used (secondary funct'n)</option>
+    <option value="3"> | 3 | Remote probability this might happen: low market share browser only</option>
+    <option value="3"> | 3 | Remote probability this might happen: certain conditions must exist</option>
+    <option value="3"> | 3 | Remote probability this might happen: can not reliably reproduce this bug</option>
+    <option value="2"> | 2 | Unlikely to occur during normal operation</option>
+    <option value="2"> | 2 | Unlikely to occur during normal operation: unlikely to be noticed</option>
+  </select>
+  <br>
+  <label for="dropdown3">Recovery:</label>
+  <select id="dropdown3">
+    <option value="10">|10 | Not possible to recover</option>
+    <option value="8"> | 8 | Special action needed (i.e. value modification in database), user cannot fix it, need support intervention</option>
+    <option value="5"> | 5 | Small interaction needed, user can fix it</option>
+    <option value="5"> | 5 | Small interaction needed: clear cache</option>
+    <option value="2"> | 2 | Automatic recovery</option>
+    <option value="1"> | 1 | No recovery needed| </option>
+  </select>
+
+  <p>
+    <button onclick="displaySelectedItems()">Calculate impact score</button>
+  </p>
+
+  <textarea id="result" rows="7" cols="120" readonly></textarea>
+
+  <p>
+    You can copy-paste the above text block as-is into JIRA.
+    <button onclick="copyToClipboard()">Copy to clipboard</button>
+  </p>
+
+
+  <script>
+    function displaySelectedItems() {
+      var dropdown1 = document.getElementById("dropdown1");
+      var selectedOption1 = dropdown1.options[dropdown1.selectedIndex].text;
+      var selectedValue1 = parseInt(dropdown1.value);
+
+      var dropdown2 = document.getElementById("dropdown2");
+      var selectedOption2 = dropdown2.options[dropdown2.selectedIndex].text;
+      var selectedValue2 = parseInt(dropdown2.value);
+
+      var dropdown3 = document.getElementById("dropdown3");
+      var selectedOption3 = dropdown3.options[dropdown3.selectedIndex].text;
+      var selectedValue3 = parseInt(dropdown3.value);
+
+      var resultTextarea = document.getElementById("result");
+      var impactScore = selectedValue1 * selectedValue2 * selectedValue3;
+
+      resultTextarea.value = "|Identifier |Score|Reason\n" +
+        "|Severity   " + selectedOption1 + "\n" +
+        "|Occurrence " + selectedOption2 + "\n" +
+        "|Recovery   " + selectedOption3 + "\n" +
+        "|Impact     |" + impactScore + "| - ";
+    }
+    function copyToClipboard() {
+      var copyText = document.getElementById("result");
+
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      document.execCommand("copy");
+
+      // alert("Copied the text: \n" + copyText.value);
+    }
+  </script>
+</body>
+</html>
