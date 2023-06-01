@@ -58,7 +58,7 @@
     <button onclick="displaySelectedItems()">Calculate impact score</button>
   </p>
 
-  <textarea id="result" rows="7" cols="120" readonly></textarea>
+  <textarea id="result" rows="9" cols="120" readonly></textarea>
 
   <p>
     You can copy-paste the above text block as-is into JIRA.
@@ -82,7 +82,8 @@
       var resultTextarea = document.getElementById("result");
       var impactScore = selectedValue1 * selectedValue2 * selectedValue3;
 
-      resultTextarea.value = "|Identifier |Score|Reason\n" +
+      resultTextarea.value = "Bug FMEA Scoring (use script at https://github.com/rabarberski/fmea)\n\n" +
+        "|Identifier |Score|Reason\n" +
         "|Severity   " + selectedOption1 + "\n" +
         "|Occurrence " + selectedOption2 + "\n" +
         "|Recovery   " + selectedOption3 + "\n" +
