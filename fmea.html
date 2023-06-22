@@ -21,6 +21,7 @@
   <label for="dropdown1">Severity:</label>
   <select id="dropdown1">
     <option value="10">|10 | Data loss, data corruption or system unavailable</option>
+    <option value="9"> | 9 | Unauthorized access to data</option>
     <option value="8"> | 8 | Important functionality is unavailable with no workaround</option>
     <option value="7"> | 7 | Important functionality is unavailable but has a reasonable workaround</option>
     <option value="5"> | 5 | Secondary functionality is unavailable but has a reasonable workaround</option>
@@ -32,14 +33,17 @@
   <label for="dropdown2">Occurrance:</label>
   <select id="dropdown2">
     <option value="10">|10 | High probability this might happen (i.e. every time)</option>
+    <option value="8"> | 8 | (security issue) Easy to reproduce by average user</option>
     <option value="5"> | 5 | Moderate probability this might happen (i.e. once every two weeks)</option>
     <option value="5"> | 5 | Moderate probability this might happen: each time mobile view is used (primary funct'n)</option>
     <option value="5"> | 5 | Moderate probability this might happen (only for some languages)</option>
+    <option value="5"> | 5 | (security issue) Not easy to reproduce for average user</option>
     <option value="3"> | 3 | Remote probability this might happen (i.e. once every two months)</option>
     <option value="3"> | 3 | Remote probability this might happen: each time mobile view is used (secondary funct'n)</option>
     <option value="3"> | 3 | Remote probability this might happen: low market share browser only</option>
     <option value="3"> | 3 | Remote probability this might happen: certain conditions must exist</option>
     <option value="3"> | 3 | Remote probability this might happen: can not reliably reproduce this bug</option>
+    <option value="3"> | 3 | (security issue) Requires certain conditions to exist, and knowledgeable user</option>
     <option value="2"> | 2 | Unlikely to occur during normal operation</option>
     <option value="2"> | 2 | Unlikely to occur during normal operation: unlikely to be noticed</option>
   </select>
@@ -51,7 +55,7 @@
     <option value="5"> | 5 | Small interaction needed, user can fix it</option>
     <option value="5"> | 5 | Small interaction needed: clear cache</option>
     <option value="2"> | 2 | Automatic recovery</option>
-    <option value="1"> | 1 | No recovery needed| </option>
+    <option value="1"> | 1 | No recovery needed</option>
   </select>
 
   <p>
