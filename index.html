@@ -20,7 +20,7 @@
 <body>
   <h1>FMEA bug scoring</h1>
   <label for="dropdown1">Severity:</label>
-  <select id="dropdown1">
+  <select id="dropdown1" onchange="calculateImpact()">
     <option value="10">|10 | Data loss, data corruption or system unavailable</option>
     <option value="9"> | 9 | Unauthorized access to data</option>
     <option value="8"> | 8 | Important functionality is unavailable with no workaround</option>
@@ -33,7 +33,7 @@
   </select>
   <br>
   <label for="dropdown2">Occurrance:</label>
-  <select id="dropdown2">
+  <select id="dropdown2" onchange="calculateImpact()">
     <option value="10">|10 | High probability this might happen (i.e. every time)</option>
     <option value="8"> | 8 | (security issue) Easy to reproduce by average user</option>
     <option value="5"> | 5 | Moderate probability this might happen (i.e. once every two weeks)</option>
@@ -51,7 +51,7 @@
   </select>
   <br>
   <label for="dropdown3">Recovery:</label>
-  <select id="dropdown3">
+  <select id="dropdown3" onchange="calculateImpact()">
     <option value="10">|10 | Not possible to recover</option>
     <option value="8"> | 8 | Special action needed (i.e. value modification in database), user cannot fix it, need support intervention</option>
     <option value="5"> | 5 | Small interaction needed, user can fix it</option>
@@ -61,7 +61,8 @@
   </select>
 
   <p>
-    <button onclick="displaySelectedItems()">Calculate impact score</button>
+    <!-- <button onclick="calculateImpact()">Calculate impact score</button> -->
+    The impact score is calculated automatically on each change above.
   </p>
 
   <textarea id="result" rows="9" cols="120"></textarea>
@@ -82,7 +83,7 @@
 
   <script>
 
-    function displaySelectedItems() {
+    function calculateImpact() {
       var dropdown1 = document.getElementById("dropdown1");
       var selectedOption1 = dropdown1.options[dropdown1.selectedIndex].text;
       var selectedValue1 = parseInt(dropdown1.value);
