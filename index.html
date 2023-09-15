@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!-- Bootstrapped by ChatGPT, and adapted to needs -->
+
 <html>
-  
+
 <head>
   <title>FMEA</title>
   <style>
@@ -67,7 +68,7 @@
 
   <p>
     <button onclick="copyToClipboard()">Copy to clipboard</button>
-    You can copy-paste the above text block as-is into JIRA. 
+    You can copy-paste the above text block as-is into JIRA.
     Preferably in a code block (tip: use <code>/code</code> to create)
   </p>
 
@@ -75,11 +76,12 @@
   <br>
   <p style="font-style: italic;">
     Note: Don't forget, this isn't science. The goal is to have a system that helps in
-    managing bugs, so the assessment and impact score should not be considered more than 
+    managing bugs, so the assessment and impact score should not be considered more than
     a ball-park indication.
   </p>
 
   <script>
+
     function displaySelectedItems() {
       var dropdown1 = document.getElementById("dropdown1");
       var selectedOption1 = dropdown1.options[dropdown1.selectedIndex].text;
@@ -103,6 +105,7 @@
         "|Recovery   " + selectedOption3 + "\n" +
         "|Impact     |" + impactScore + "| - ";
     }
+
     function copyToClipboard() {
       var copyText = document.getElementById("result");
 
@@ -113,6 +116,7 @@
 
       // alert("Copied the text: \n" + copyText.value);
     }
+
   </script>
 </body>
 </html>
